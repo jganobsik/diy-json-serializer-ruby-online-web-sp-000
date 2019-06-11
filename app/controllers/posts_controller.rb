@@ -46,4 +46,9 @@ private
   def post_params
     params.require(:post).permit(:title, :description)
   end
+  
+  def post_data
+    post = Post.find(params[:id])
+    render json: PostSerializer.serialize(post)
+  end
 end
